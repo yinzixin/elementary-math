@@ -18,6 +18,8 @@ for input in "$@"; do
         -V mainfont="Noto Sans CJK SC" \
         -V sansfont="Noto Sans CJK SC" \
         -V monofont="Noto Sans Mono CJK SC" \
+        -V CJKmainfont="Noto Sans CJK SC" \
+        -V CJKoptions="BoldFont=Noto Sans CJK SC Bold" \
         -V geometry:paper=a4paper \
         -V geometry:margin=3cm \
         --pdf-engine xelatex
