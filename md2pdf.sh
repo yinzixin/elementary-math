@@ -1,0 +1,23 @@
+#!/bin/bash
+set -e
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <file.md> [file2.md ...]"
+    exit 1
+fi
+
+OUTDIR="$(dirname "$0")/pdf"
+mkdir -p "$OUTDIR"
+
+for input in "$@"; do
+    basename="${input%.md}"
+    basename="${basename##*/}"
+    output="$OUTDIR/${basename}.pdf"
+    echo "Converting $input -> $output"
+    pandoc "$input" -o "$output" \
+        -V mainfont="Noto Sans CJK SC" \
+        -V sansfont="Noto Sans CJK SC" \
+        -V monofont="Noto Sans Mono CJK SC" \
+        --pdf-engine xelatex
+    echo "Done: $output"
+done
